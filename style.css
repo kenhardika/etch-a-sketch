@@ -1,3 +1,10 @@
+.layerCanvas {
+    display: grid;
+    grid-template-columns: repeat(16, 12px);
+    gap: 0px;
+    box-sizing: border-box;
+}
+
 .colrow:hover {
  background-color: red;
 }

@@ -8,10 +8,10 @@ const layer = document.createElement('div');
 
 // repeat it 16 times horizontally in a single row,
 layer.classList.add('layerCanvas');
-layer.style.display="grid";
-layer.style.gridTemplateColumns="repeat(16, 12px)"
-layer.style.gap="0px";
-layer.style.boxSizing="border-box";
+// layer.style.display="grid";
+// layer.style.gridTemplateColumns="repeat(16, 12px)"
+// layer.style.gap="0px";
+// layer.style.boxSizing="border-box";
 
 for (let j=1; j<=16 ; j++) {
 for (let i=1 ; i<=16; i++) {
