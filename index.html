@@ -13,11 +13,17 @@
 <div class="canvas">
 
 </div>
-
-<button id="resetButton"> reset </button>
-
-<input type="range" id="rangeCanvas" name="rangeCanvas" min="16" max="20">
-<input type="submit" id="submitRange" name="submitRange" value="Submit">
-
+<button id="resetButton"> reset </button> <br>
+<div class="setScale">
+        <input type="radio" name="sizeSlider" id="val1" value="16" required>
+        <label class="labelScale" for="val1"> 16x16 </label>    
+    
+        <input type="radio" name="sizeSlider" id="val2" value="32" required>
+        <label class="labelScale" for="val2" > 32x32 </label>
+    
+        <input type="radio" name="sizeSlider" id="val3" value="64" required>
+        <label class="labelScale" for="val3"> 64x64 </label>
+</div>
+<div class="sizeSlider-pos"> </div>
 </body>
 </html>

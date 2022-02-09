@@ -1,10 +1,33 @@
+/* $number-of-options: 3; */
 .layerCanvas {
     display: grid;
     grid-template-columns: repeat(16, 12px);
-    gap: 0px;
+    
     box-sizing: border-box;
 }
 
 .colrow:hover {
  background-color: red;
+}
+
+
+.setScale {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+input[name ="sizeSlider"] {
+    display: none;
+}
+
+.labelScale{
+    display: flex;
+    align-items: center;
+    color: #fcd7ad;
+    padding: 10px;
+    font-weight: 600;
+    border: 2px solid #a57548;
+    background-color: #a57548;
+    font-family: Helvetica, sans-serif;
 }
