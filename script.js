@@ -8,6 +8,8 @@ const resetButton = document.getElementById('resetButton');
 // create block as div,
 layer.classList.add('layerCanvas');
 
+
+
 canvasSize(16);
 
 if(document.querySelector(`input[name="sizeSlider"]`)) {

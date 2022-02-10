@@ -1,7 +1,17 @@
+.canvas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    border: 2px solid black;
+}
+
+
 .layerCanvas {
     display: grid;
     /* grid-template-columns: repeat(16, 12px); */
     box-sizing: border-box;
+    border: 2px solid navy;
 }
 
 .colrow:hover {
@@ -15,9 +25,14 @@
     gap: 20px;
 }
 
-/* input[name ="sizeSlider"] {
+input[name ="sizeSlider"] {
     display: none;
-} */
+}
+
+.setScale{
+    display: flex;
+    justify-content: center;
+}
 
 .labelScale{
     display: flex;
@@ -31,12 +46,23 @@
 }
 
 .labelScale:before{
-    display: flex;
     content: "";
     height: 20px;
     width: 20px;
-    border: 2px solid white;
-    color: #fcd7ad;
+    border: 2px solid #a57548;
     border-radius: 50%;
     margin-right: 10px;
 }
+
+input[name ='sizeSlider']:checked + .labelScale{
+ background-color: #a57548;
+}
+
+input[name ='sizeSlider']:checked + .labelScale:before{
+    height: 16px;
+    width: 16px;
+    border: 5px solid white;
+    background-color: #a57548;
+   }
+   
+
