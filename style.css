@@ -1,3 +1,6 @@
+body{
+    margin: 0;
+}
 .canvas {
     display: flex;
     align-items: center;
@@ -7,6 +10,11 @@
     height: 460px;
 }
 
+.header{
+    display: flex;
+    justify-content: center;
+    font-family: Helvetica, sans-serif;
+}
 
 .layerCanvas {
     display: grid;
@@ -23,13 +31,24 @@ input[name ="sizeSlider"] {
     display: none;
 }
 .configCanvas{
-    position: absolute;
+    display: flex;
+    justify-content: center;
+    border: solid 2px black;
 }
 .setScale{
-    position: absolute;
-    top: 50px;
-    left: 200px;
+    display: flex;
+    flex-direction: column;
+    /* padding: 20px 0 20px 0; */
     border: solid 2px black;
+}
+.customPanel {
+    display: flex;
+    justify-content: center;
+    font-family: helvetica,sans-serif;
+}
+.all-labelScale {
+    display: flex;
+    flex-direction: row;
 }
 
 .labelScale{
