@@ -43,12 +43,12 @@ if(document.querySelector(`input[name="sizeSlider"]`)) {
 
 // repeat it 16 times horizontally in a single row,
 function canvasSize(item) {
-layer.style.gridTemplateColumns=`repeat(${item}, 12px)`;
+layer.style.gridTemplateColumns=`repeat(${item}, 16px)`;
 layer.innerHTML="";
 for (let j=1; j<=item ; j++) {
                 for (let i=1 ; i<=item; i++) {
                     let div = document.createElement('div');
-                        div.style.border = "solid 1px black";
+                        div.style.border = "solid 3px transparent";
                         div.style.width = "10px";
                         div.style.height = "10px";
                         div.classList.add(`colrow`);
