@@ -18,7 +18,17 @@ const layer = document.createElement('div');
 layer.classList.add('layerCanvas');
 layer.style.display="grid";
 layer.style.boxSizing="border-box";
-
+// function paintCanvas() {
+// if (document.querySelector('.colrow')) {
+//     document.querySelectorAll('.colrow').forEach( (elm)=> {
+//         elm.addEventListener( 'click',function (event) {
+//             let targ = event.target.classList.toString();
+//             //console.log('clicked ' + typeof targ);
+//             paintAddColor(targ);
+//         });
+//     });
+// };
+// };
 function canvasSize(item) {
 layer.style.gridTemplateColumns=`repeat(${item}, 12px)`;
 layer.innerHTML='';    

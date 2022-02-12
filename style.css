@@ -21,10 +21,12 @@ body{
     /* grid-template-columns: repeat(16, 12px); */
     box-sizing: border-box;
     border: 2px solid navy;
+    width: 371px;
+    height: 371px;
 }
 
 .colrow:hover {
- background-color: red;
+ background-color: black;
 }
 
 input[name ="sizeSlider"] {
