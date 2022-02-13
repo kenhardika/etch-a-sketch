@@ -18,11 +18,13 @@ body{
 
 .layerCanvas {
     display: grid;
+    justify-content: center;
+    align-items: center;
     /* grid-template-columns: repeat(16, 12px); */
     box-sizing: border-box;
-    border: 2px solid navy;
-    width: 371px;
-    height: 371px;
+    border: 1px solid navy;
+    height:  24.1em;
+    width:  24em;
 }
 
 .colrow:hover {
