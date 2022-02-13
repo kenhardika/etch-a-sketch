@@ -22,8 +22,8 @@ body{
     align-items: center;
     /* grid-template-columns: repeat(16, 12px); */
     box-sizing: border-box;
-    border: 1px solid navy;
-    height:  24.1em;
+    border: solid 1px navy;
+    height:  24em;
     width:  24em;
 }
 
