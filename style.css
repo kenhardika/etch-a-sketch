@@ -25,6 +25,7 @@ body{
     border: solid 1px navy;
     height:  24em;
     width:  24em;
+    user-select:none;
 }
 
 .colrow:hover {

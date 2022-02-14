@@ -13,6 +13,7 @@ layer.classList.add('layerCanvas');
 //default
 canvasSize(16);
 changeScale();
+drawState();
 
 function changeScale () {
 if(document.querySelector(`input[name="sizeSlider"]`)) {
@@ -20,7 +21,8 @@ if(document.querySelector(`input[name="sizeSlider"]`)) {
         elem.addEventListener('change', function (event) {  
             let item = event.target.value;
             console.log(item);
-            canvasSize(item);      
+            canvasSize(item);
+            drawState();   
     });
     });
 };
@@ -48,6 +50,7 @@ console.log("pake 36")
 };
 layer.innerHTML="";
 layer.style.cursor="default";
+layer.setAttribute('draggable', 'false');
 let itemArea = item*item;
     for (let i=1 ; i<=itemArea; i++) {
                     let div = document.createElement('div');
@@ -55,6 +58,7 @@ let itemArea = item*item;
                         div.style.boxSizing = "border-box";
                         div.classList.add(`colrow`);
                         div.classList.add(`_${i}`);
+                        div.setAttribute('draggable', 'false');
                         if (item == 16) {
                             div.style.width = `${wdh16}em`; //untuk 16x16 1.5em 
                             div.style.height = `${wdh16}em`;
@@ -74,10 +78,31 @@ let itemArea = item*item;
                         //     div.onmouseleave = function() { div.style.backgroundColor="black"; };
                         // };
                         
-                        div.addEventListener('mouseover',()=> {div.style.backgroundColor="navy";});
+                        // div.addEventListener('mouseover',()=> {div.style.backgroundColor="navy";});
                         
-                        div.addEventListener('mouseup', ()=>{ div.style.backgroundColor="navy"; console.log('mouseup') });
+                        // div.addEventListener('mouseup', ()=>{ div.style.backgroundColor="navy"; console.log('mouseup') });
                     layer.append(div);
                     canvas.append(layer);
     }
 };
+
+function drawPaint(e) {
+ 
+    e.target.style.backgroundColor = "black";
+    
+}
+function drawPainthold(e) {
+    if (e.buttons > 0) {
+          e.target.style.backgroundColor = "black";
+        } 
+    else {
+        } 
+}
+
+function drawState() {
+let gridEach = document.querySelectorAll('.colrow');
+    for (let i = 0 ; i < gridEach.length ; i++) {
+        gridEach[i].addEventListener('mousedown', drawPaint);
+        gridEach[i].addEventListener('mouseenter', drawPainthold);
+    };    
+}

@@ -10,10 +10,19 @@
     
 <div class="canvas"></div>    
 
+<div class="test"> this is test </div>
+
 </body>
 <script>
 const canvas = document.querySelector('.canvas');
 const layer = document.createElement('div');
+let test = document.querySelector('.test');
+
+
+test.addEventListener('click', function(e){
+    console.log(e);
+})
+
 
 layer.classList.add('layerCanvas');
 layer.style.display="grid";
