@@ -1,9 +1,7 @@
-
-
 const canvas = document.querySelector('.canvas');
 const para = document.createElement('a');
 const layer = document.createElement('div');
-const resetButton = document.getElementById('resetButton');
+const clearButton = document.querySelector('.clearBtn');
 // const testdiv = document.querySelector('.test');
 
 // create block as div,
@@ -14,6 +12,7 @@ layer.classList.add('layerCanvas');
 canvasSize(16);
 changeScale();
 drawState();
+eraseState();
 
 function changeScale () {
 if(document.querySelector(`input[name="sizeSlider"]`)) {
@@ -34,19 +33,19 @@ let wdh16 = 1.5;
 let wdh24 = 1;
 let wdh36 = 0.75;
 if (item == 16 ) {
-layer.style.gridTemplateColumns=`repeat(${item}, ${wdh16}em)`; //untuk 24x24 1em
-layer.style.gridTemplateRows=`repeat(${item}, ${wdh16}em)`; //NEED CHANGE TO SMALLER PIXEL THE MORE BIGGER THE Input ITEM
-console.log("pake 16")
+    layer.style.gridTemplateColumns=`repeat(${item}, ${wdh16}em)`; //untuk 24x24 1em
+    layer.style.gridTemplateRows=`repeat(${item}, ${wdh16}em)`; //NEED CHANGE TO SMALLER PIXEL THE MORE BIGGER THE Input ITEM
+    console.log("pake 16")
 }
 else if (item == 24) {
-layer.style.gridTemplateColumns=`repeat(${item}, ${wdh24}em)`; //untuk 24x24 1em
-layer.style.gridTemplateRows=`repeat(${item}, ${wdh24}em)`; //NEED CHANGE TO SMALLER PIXEL THE MORE BIGGER THE Input ITEM
-console.log("pake 24")
+    layer.style.gridTemplateColumns=`repeat(${item}, ${wdh24}em)`; //untuk 24x24 1em
+    layer.style.gridTemplateRows=`repeat(${item}, ${wdh24}em)`; //NEED CHANGE TO SMALLER PIXEL THE MORE BIGGER THE Input ITEM
+    console.log("pake 24")
 }
 else {
-layer.style.gridTemplateColumns=`repeat(${item}, ${wdh36}em)`; //untuk 24x24 1em
-layer.style.gridTemplateRows=`repeat(${item}, ${wdh36}em)`; //NEED CHANGE TO SMALLER PIXEL THE MORE BIGGER THE Input ITEM
-console.log("pake 36")
+    layer.style.gridTemplateColumns=`repeat(${item}, ${wdh36}em)`; //untuk 24x24 1em
+    layer.style.gridTemplateRows=`repeat(${item}, ${wdh36}em)`; //NEED CHANGE TO SMALLER PIXEL THE MORE BIGGER THE Input ITEM
+    console.log("pake 36")
 };
 layer.innerHTML="";
 layer.style.cursor="default";
@@ -71,25 +70,13 @@ let itemArea = item*item;
                             div.style.width = `${wdh36}em`; //untuk 36x36 0.5em 
                             div.style.height = `${wdh36}em`;
                         }
-                        //paint add color
-                        //need MOUSE DOWN EVENT
-                        // div.onmousedown = function() { 
-                        //     div.style.backgroundColor="navy"; 
-                        //     div.onmouseleave = function() { div.style.backgroundColor="black"; };
-                        // };
-                        
-                        // div.addEventListener('mouseover',()=> {div.style.backgroundColor="navy";});
-                        
-                        // div.addEventListener('mouseup', ()=>{ div.style.backgroundColor="navy"; console.log('mouseup') });
                     layer.append(div);
                     canvas.append(layer);
     }
 };
 
 function drawPaint(e) {
- 
     e.target.style.backgroundColor = "black";
-    
 }
 function drawPainthold(e) {
     if (e.buttons > 0) {
@@ -100,9 +87,15 @@ function drawPainthold(e) {
 }
 
 function drawState() {
-let gridEach = document.querySelectorAll('.colrow');
+    let gridEach = document.querySelectorAll('.colrow');
     for (let i = 0 ; i < gridEach.length ; i++) {
         gridEach[i].addEventListener('mousedown', drawPaint);
         gridEach[i].addEventListener('mouseenter', drawPainthold);
     };    
+}
+
+function eraseState() {
+    clearButton.addEventListener('click',()=> { let gridEach = document.querySelectorAll('.colrow');
+        for (let i=0 ; i <gridEach.length ; i++) { gridEach[i].style.backgroundColor=''; };
+        })
 }
