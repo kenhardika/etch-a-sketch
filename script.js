@@ -3,7 +3,6 @@ const para = document.createElement('a');
 const layer = document.createElement('div');
 const clearButton = document.querySelector('.clearBtn');
 let colorPicker = document.getElementById('colorPicker').value;
-// const testdiv = document.querySelector('.test');
 
 // create block as div
 layer.classList.add('layerCanvas');
@@ -25,22 +24,6 @@ if(document.querySelector(`input[name="sizeSlider"]`)) {
     });
 };
 //Eraser State
-let toggleEraser = document.forms["toggleErase"].elements["toggleEraser"];
-for(let i = 0; i < toggleEraser.length; i++) {
-    toggleEraser[i].onclick = function() {
-        let erase = this.value;
-        eraseState(erase);
-    }
-};
-
-// if (document.querySelector('input[name="toggleEraser"]')) {
-//     document.querySelectorAll('input[name="toggleEraser"]').forEach((elem) => {
-//         elem.addEventListener('change', function(event) {
-//         let toggleEraser = event.target.value;
-//         console.log(toggleEraser);
-//         })
-//     })
-// };
 
 //Clear Canvas
 clearButton.addEventListener('click',()=> { let gridEach = document.querySelectorAll('.colrow');
@@ -94,27 +77,14 @@ let itemArea = item*item;
                     canvas.append(layer);
     }
 };
-function eraseState(erase){
-    if (erase > 0) {
-        console.log('erase ON');
-    
-    }
-    else {
-        console.log('erase OFF')
-        drawState(); 
-    }
-}
-
 
 function drawPaint(e) {
-  //  eraserOn = document.getElementById('toggleEraser').value;
     
     colorPicker = document.getElementById('colorPicker').value;
     e.target.style.backgroundColor = colorPicker;
    // console.log(eraserOn);
 }
 function drawPainthold(e) {
-   // eraserOn = document.getElementById('toggleEraser').value
     colorPicker = document.getElementById('colorPicker').value;
     if (e.buttons > 0) {
           e.target.style.backgroundColor = colorPicker;
