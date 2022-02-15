@@ -10,18 +10,23 @@
     
 <div class="canvas"></div>    
 
-<div class="test"> this is test </div>
+<div class="test"> click this to check color value </div>
+
+<div class="colorPicker">
+    <input type="color" id="colorPicker" value="#ff0000" >
+</div>
 
 </body>
 <script>
 const canvas = document.querySelector('.canvas');
 const layer = document.createElement('div');
 let test = document.querySelector('.test');
+const colorPicker = document.getElementById('colorPicker');
 
 
-test.addEventListener('click', function(e){
-    console.log(e);
-})
+test.addEventListener('click', ()=>{
+    console.log(colorPicker.value);
+});
 
 
 layer.classList.add('layerCanvas');

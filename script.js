@@ -2,6 +2,7 @@ const canvas = document.querySelector('.canvas');
 const para = document.createElement('a');
 const layer = document.createElement('div');
 const clearButton = document.querySelector('.clearBtn');
+let colorPicker = document.getElementById('colorPicker').value;
 // const testdiv = document.querySelector('.test');
 
 // create block as div,
@@ -12,7 +13,7 @@ layer.classList.add('layerCanvas');
 canvasSize(16);
 changeScale();
 drawState();
-eraseState();
+clearState();
 
 function changeScale () {
 if(document.querySelector(`input[name="sizeSlider"]`)) {
@@ -76,11 +77,14 @@ let itemArea = item*item;
 };
 
 function drawPaint(e) {
-    e.target.style.backgroundColor = "black";
+    colorPicker = document.getElementById('colorPicker').value;
+    e.target.style.backgroundColor = colorPicker;
+    //console.log(colorPicker);
 }
 function drawPainthold(e) {
+    colorPicker = document.getElementById('colorPicker').value;
     if (e.buttons > 0) {
-          e.target.style.backgroundColor = "black";
+          e.target.style.backgroundColor = colorPicker;
         } 
     else {
         } 
@@ -94,7 +98,7 @@ function drawState() {
     };    
 }
 
-function eraseState() {
+function clearState() {
     clearButton.addEventListener('click',()=> { let gridEach = document.querySelectorAll('.colrow');
         for (let i=0 ; i <gridEach.length ; i++) { gridEach[i].style.backgroundColor=''; };
         })
