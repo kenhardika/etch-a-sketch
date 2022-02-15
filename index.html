@@ -17,9 +17,6 @@
 </div>
 
 <div class="configCanvas">
-    <div class="colorPicker">
-        <input type="color" id="colorPicker" >
-    </div>
     <div class="setScale">
         <div class="customPanel">CUSTOM PANEL</div>
         
@@ -34,10 +31,22 @@
         <label class="labelScale" for="val3"> 32x32 </label>
         </div>
     </div>
+    <div class="colorPicker">
+        <input type="color" id="colorPicker" >
+    </div>
+    
+    <form name="toggleErase">
+        <input type="radio" name="toggleEraser" id="toggleEraserOn" value="1">
+        <label for="toggleEraserOn"> Eraser On </label>
+        
+        <input type="radio" name="toggleEraser" id="toggleEraserOff" value="0" checked>
+        <label for="toggleEraserOff"> Eraser Off </label>
+    </form>
 
     <div class="clearButton">
         <button class="clearBtn"> Clear </button>
     </div>
+
 </div>
 
 <!-- <div class="test"> this is a div </div> -->

@@ -37,7 +37,8 @@ input[name ="sizeSlider"] {
 }
 .configCanvas{
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     border: solid 2px black;
 }
 .setScale{
@@ -86,6 +87,5 @@ input[name ='sizeSlider']:checked + .labelScale:before{
     width: 16px;
     border: 5px solid white;
     background-color: #a57548;
-   }
-   
+}
 

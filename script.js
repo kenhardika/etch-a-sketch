@@ -5,17 +5,15 @@ const clearButton = document.querySelector('.clearBtn');
 let colorPicker = document.getElementById('colorPicker').value;
 // const testdiv = document.querySelector('.test');
 
-// create block as div,
+// create block as div
 layer.classList.add('layerCanvas');
 
 
 //default
 canvasSize(16);
-changeScale();
 drawState();
-clearState();
 
-function changeScale () {
+//Canvas Size Scale
 if(document.querySelector(`input[name="sizeSlider"]`)) {
     document.querySelectorAll(`input[name="sizeSlider"]`).forEach((elem)=> {
         elem.addEventListener('change', function (event) {  
@@ -26,7 +24,28 @@ if(document.querySelector(`input[name="sizeSlider"]`)) {
     });
     });
 };
+//Eraser State
+let toggleEraser = document.forms["toggleErase"].elements["toggleEraser"];
+for(let i = 0; i < toggleEraser.length; i++) {
+    toggleEraser[i].onclick = function() {
+        let erase = this.value;
+        eraseState(erase);
+    }
 };
+
+// if (document.querySelector('input[name="toggleEraser"]')) {
+//     document.querySelectorAll('input[name="toggleEraser"]').forEach((elem) => {
+//         elem.addEventListener('change', function(event) {
+//         let toggleEraser = event.target.value;
+//         console.log(toggleEraser);
+//         })
+//     })
+// };
+
+//Clear Canvas
+clearButton.addEventListener('click',()=> { let gridEach = document.querySelectorAll('.colrow');
+        for (let i=0 ; i <gridEach.length ; i++) { gridEach[i].style.backgroundColor=''; };
+        });
 
 // repeat it 16 times horizontally in a single row,
 function canvasSize(item) {
@@ -75,13 +94,27 @@ let itemArea = item*item;
                     canvas.append(layer);
     }
 };
+function eraseState(erase){
+    if (erase > 0) {
+        console.log('erase ON');
+    
+    }
+    else {
+        console.log('erase OFF')
+        drawState(); 
+    }
+}
+
 
 function drawPaint(e) {
+  //  eraserOn = document.getElementById('toggleEraser').value;
+    
     colorPicker = document.getElementById('colorPicker').value;
     e.target.style.backgroundColor = colorPicker;
-    //console.log(colorPicker);
+   // console.log(eraserOn);
 }
 function drawPainthold(e) {
+   // eraserOn = document.getElementById('toggleEraser').value
     colorPicker = document.getElementById('colorPicker').value;
     if (e.buttons > 0) {
           e.target.style.backgroundColor = colorPicker;
@@ -89,17 +122,10 @@ function drawPainthold(e) {
     else {
         } 
 }
-
 function drawState() {
     let gridEach = document.querySelectorAll('.colrow');
     for (let i = 0 ; i < gridEach.length ; i++) {
         gridEach[i].addEventListener('mousedown', drawPaint);
         gridEach[i].addEventListener('mouseenter', drawPainthold);
     };    
-}
-
-function clearState() {
-    clearButton.addEventListener('click',()=> { let gridEach = document.querySelectorAll('.colrow');
-        for (let i=0 ; i <gridEach.length ; i++) { gridEach[i].style.backgroundColor=''; };
-        })
 }
