@@ -1,6 +1,6 @@
 const canvas = document.querySelector('.canvas');
 const layer = document.createElement('div');
-const clearBtn = document.querySelector('.clearBtn');
+const clearBtn = document.getElementById('clearBtn');
 const eraserBtn = document.getElementById('eraserBtn');
 const drawBtn = document.getElementById('drawBtn');
 const rainbowBtn = document.getElementById('rainbowBtn');
@@ -9,7 +9,6 @@ const DEFAULT_SIZE = 16;
 let curMode = DEFAULT_MODE;
 let colorPicker = document.getElementById('colorPicker').value;
 
-// create block as div
 //Canvas Size Scale
 if(document.querySelector(`input[name="sizeSlider"]`)) {
     document.querySelectorAll(`input[name="sizeSlider"]`).forEach((elem)=> {
@@ -73,7 +72,7 @@ function clearState() {
         curMode = DEFAULT_MODE; 
     };
 }
-// repeat it 16 times horizontally in a single row,
+// repeat it x times horizontally in a single row,
 
 layer.classList.add('layerCanvas');
 function canvasSize(item) {
