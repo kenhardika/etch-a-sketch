@@ -1,5 +1,4 @@
 const canvas = document.querySelector('.canvas');
-const para = document.createElement('a');
 const layer = document.createElement('div');
 const clearBtn = document.querySelector('.clearBtn');
 const eraserBtn = document.getElementById('eraserBtn');
@@ -21,7 +20,7 @@ if(document.querySelector(`input[name="sizeSlider"]`)) {
     });
     });
 };
-//Eraser State
+//Mode State, by click
 eraserBtn.onclick= ()=>{ changeMode('eraserMode'); console.log('eraser mode on'); }
 drawBtn.onclick= ()=> { changeMode('drawMode'); console.log('draw mode on'); }
 clearBtn.onclick=()=> { changeMode('clearMode'); console.log('clear mode on'); } 
@@ -30,7 +29,6 @@ function changeMode(modeState){
 curMode = modeState;
 activateBtnMode(modeState);
 }
-
 
 function activateBtnMode(modeState){
     if (curMode === 'eraserMode') {
@@ -51,7 +49,7 @@ colorPicker = document.getElementById('colorPicker').value;
         else if (curMode === 'drawMode') {
         e.target.style.backgroundColor = colorPicker;
         }
-  }
+}
 
 function clearState() {
    if (curMode === 'clearMode') {
@@ -111,7 +109,7 @@ let itemArea = item*item;
                     canvas.append(layer);
     }
 };
-
+//mousedown event, so you can hold the click to draw
 let mouseDown = false
 document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
