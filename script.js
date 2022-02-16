@@ -3,6 +3,7 @@ const layer = document.createElement('div');
 const clearBtn = document.querySelector('.clearBtn');
 const eraserBtn = document.getElementById('eraserBtn');
 const drawBtn = document.getElementById('drawBtn');
+const rainbowBtn = document.getElementById('rainbowBtn');
 const DEFAULT_MODE = 'drawMode';
 const DEFAULT_SIZE = 16;
 let curMode = DEFAULT_MODE;
@@ -23,7 +24,10 @@ if(document.querySelector(`input[name="sizeSlider"]`)) {
 //Mode State, by click
 eraserBtn.onclick= ()=>{ changeMode('eraserMode'); console.log('eraser mode on'); }
 drawBtn.onclick= ()=> { changeMode('drawMode'); console.log('draw mode on'); }
+rainbowBtn.onclick= ()=> { changeMode('rainbowMode'); console.log('rainbow mode on'); }
 clearBtn.onclick=()=> { changeMode('clearMode'); console.log('clear mode on'); } 
+
+
 
 function changeMode(modeState){
 curMode = modeState;
@@ -34,6 +38,8 @@ function activateBtnMode(modeState){
     if (curMode === 'eraserMode') {
     }
     else if ( curMode === 'drawMode' ){
+    }
+    else if (curMode === 'rainbowMode') {
     }
     else if (curMode === 'clearMode') {
     clearState();
@@ -48,6 +54,13 @@ colorPicker = document.getElementById('colorPicker').value;
         }
         else if (curMode === 'drawMode') {
         e.target.style.backgroundColor = colorPicker;
+        }
+        else if (curMode === 'rainbowMode') {
+        let RGBa = Math.floor(Math.random()*256);
+        let RGBb = Math.floor(Math.random()*256);
+        let RGBc = Math.floor(Math.random()*256);
+        
+        e.target.style.backgroundColor = `rgb(${RGBa},${RGBb},${RGBc})`;
         }
 }
 
