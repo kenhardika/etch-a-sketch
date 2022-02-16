@@ -22,14 +22,13 @@ body{
     align-items: center;
     /* grid-template-columns: repeat(16, 12px); */
     box-sizing: border-box;
-    border: solid 1px navy;
-    height:  24em;
-    width:  24em;
+    height:  32em;
+    width:  32em;
     user-select:none;
 }
 
 .colrow:hover {
- background-color: black;
+ background-color: rgba(0, 0, 0, 0.284);
 }
 
 input[name ="sizeSlider"] {

@@ -1,17 +1,15 @@
 const canvas = document.querySelector('.canvas');
 const para = document.createElement('a');
 const layer = document.createElement('div');
-const clearButton = document.querySelector('.clearBtn');
+const clearBtn = document.querySelector('.clearBtn');
+const eraserBtn = document.getElementById('eraserBtn');
+const drawBtn = document.getElementById('drawBtn');
+const DEFAULT_MODE = 'drawMode';
+const DEFAULT_SIZE = 16;
+let curMode = DEFAULT_MODE;
 let colorPicker = document.getElementById('colorPicker').value;
 
 // create block as div
-layer.classList.add('layerCanvas');
-
-
-//default
-canvasSize(16);
-drawState();
-
 //Canvas Size Scale
 if(document.querySelector(`input[name="sizeSlider"]`)) {
     document.querySelectorAll(`input[name="sizeSlider"]`).forEach((elem)=> {
@@ -24,17 +22,53 @@ if(document.querySelector(`input[name="sizeSlider"]`)) {
     });
 };
 //Eraser State
+eraserBtn.onclick= ()=>{ changeMode('eraserMode'); console.log('eraser mode on'); }
+drawBtn.onclick= ()=> { changeMode('drawMode'); console.log('draw mode on'); }
+clearBtn.onclick=()=> { changeMode('clearMode'); console.log('clear mode on'); } 
 
-//Clear Canvas
-clearButton.addEventListener('click',()=> { let gridEach = document.querySelectorAll('.colrow');
-        for (let i=0 ; i <gridEach.length ; i++) { gridEach[i].style.backgroundColor=''; };
-        });
+function changeMode(modeState){
+curMode = modeState;
+activateBtnMode(modeState);
+}
 
+
+function activateBtnMode(modeState){
+    if (curMode === 'eraserMode') {
+    }
+    else if ( curMode === 'drawMode' ){
+    }
+    else if (curMode === 'clearMode') {
+    clearState();
+    }
+}
+
+function changeColor(e) {
+colorPicker = document.getElementById('colorPicker').value;
+    if (e.type === 'mouseover' && !mouseDown) return
+        if (curMode === 'eraserMode') {
+        e.target.style.backgroundColor = '';
+        }
+        else if (curMode === 'drawMode') {
+        e.target.style.backgroundColor = colorPicker;
+        }
+  }
+
+function clearState() {
+   if (curMode === 'clearMode') {
+       console.log('process clearing');
+    let gridEach = document.querySelectorAll('.colrow')
+        for (let i=0 ; i <gridEach.length ; i++) { gridEach[i].style.backgroundColor='';
+        }
+        curMode = DEFAULT_MODE; 
+    };
+}
 // repeat it 16 times horizontally in a single row,
+
+layer.classList.add('layerCanvas');
 function canvasSize(item) {
-let wdh16 = 1.5;
-let wdh24 = 1;
-let wdh36 = 0.75;
+let wdh16 = 2;
+let wdh24 = 1.33;
+let wdh36 = 1;
 if (item == 16 ) {
     layer.style.gridTemplateColumns=`repeat(${item}, ${wdh16}em)`; //untuk 24x24 1em
     layer.style.gridTemplateRows=`repeat(${item}, ${wdh16}em)`; //NEED CHANGE TO SMALLER PIXEL THE MORE BIGGER THE Input ITEM
@@ -78,24 +112,19 @@ let itemArea = item*item;
     }
 };
 
-function drawPaint(e) {
-    
-    colorPicker = document.getElementById('colorPicker').value;
-    e.target.style.backgroundColor = colorPicker;
-   // console.log(eraserOn);
-}
-function drawPainthold(e) {
-    colorPicker = document.getElementById('colorPicker').value;
-    if (e.buttons > 0) {
-          e.target.style.backgroundColor = colorPicker;
-        } 
-    else {
-        } 
-}
+let mouseDown = false
+document.body.onmousedown = () => (mouseDown = true)
+document.body.onmouseup = () => (mouseDown = false)
+
 function drawState() {
     let gridEach = document.querySelectorAll('.colrow');
     for (let i = 0 ; i < gridEach.length ; i++) {
-        gridEach[i].addEventListener('mousedown', drawPaint);
-        gridEach[i].addEventListener('mouseenter', drawPainthold);
+        gridEach[i].addEventListener('mouseover', changeColor);
+        gridEach[i].addEventListener('mousedown', changeColor);
     };    
+}
+
+window.onload = () => {
+    canvasSize(DEFAULT_SIZE);
+    drawState();
 }
