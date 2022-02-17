@@ -14,17 +14,17 @@ if(document.querySelector(`input[name="sizeSlider"]`)) {
     document.querySelectorAll(`input[name="sizeSlider"]`).forEach((elem)=> {
         elem.addEventListener('change', function (event) {  
             let item = event.target.value;
-            console.log(item);
+            // console.log(item);
             canvasSize(item);
             drawState();   
     });
     });
 };
 //Mode State, by click
-eraserBtn.onclick= ()=>{ changeMode('eraserMode'); console.log('eraser mode on'); }
-drawBtn.onclick= ()=> { changeMode('drawMode'); console.log('draw mode on'); }
-rainbowBtn.onclick= ()=> { changeMode('rainbowMode'); console.log('rainbow mode on'); }
-clearBtn.onclick=()=> { changeMode('clearMode'); console.log('clear mode on'); } 
+eraserBtn.onclick= ()=>{ changeMode('eraserMode'); }
+drawBtn.onclick= ()=> { changeMode('drawMode');}
+rainbowBtn.onclick= ()=> { changeMode('rainbowMode');}
+clearBtn.onclick=()=> { changeMode('clearMode');} 
 
 //change mode
 function changeMode(modeState){
@@ -89,17 +89,14 @@ let wdh36 = 1;
 if (item == 16 ) {
     layer.style.gridTemplateColumns=`repeat(${item}, ${wdh16}em)`;
     layer.style.gridTemplateRows=`repeat(${item}, ${wdh16}em)`;
-    console.log("pake 16")
 }
 else if (item == 24) {
     layer.style.gridTemplateColumns=`repeat(${item}, ${wdh24}em)`;
     layer.style.gridTemplateRows=`repeat(${item}, ${wdh24}em)`;
-    console.log("pake 24")
 }
 else {
     layer.style.gridTemplateColumns=`repeat(${item}, ${wdh36}em)`;
     layer.style.gridTemplateRows=`repeat(${item}, ${wdh36}em)`;
-    console.log("pake 36")
 };
 layer.innerHTML="";
 layer.style.cursor="default";
