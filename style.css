@@ -1,21 +1,24 @@
 body{
     margin: 0;
-    background-color: aliceblue;
+    background-color: #ffdbb9;
 }
 .canvas {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 50px;
-    border: 2px solid black;
+    padding: 40px;
+    /* border: 2px solid black; */
     height: 460px;
 }
 
 .header{
     display: flex;
     justify-content: center;
-    font-family: Helvetica, sans-serif;
+    font-family: 'Sora', sans-serif;    
     font-size: 40px;
+    padding: 10px 0 0 0;
+    color: rgb(255, 255, 255);
+    user-select:none;
 }
 
 .layerCanvas {
@@ -27,6 +30,7 @@ body{
     height:  32em;
     width:  32em;
     user-select:none;
+    background-color: white;
 }
 
 .colrow:hover {
@@ -40,7 +44,7 @@ input[name ="sizeSlider"] {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: solid 2px black;
+    /* border: solid 2px black; */
 }
 .setScale{
     display: flex;
@@ -51,23 +55,24 @@ input[name ="sizeSlider"] {
 .customPanel {
     display: flex;
     justify-content: center;
-    font-family: helvetica,sans-serif;
+    font-family: 'Sora', sans-serif;
 }
 .all-labelScale {
     display: flex;
     flex-direction: row;
     gap: 10px;
+    padding: 10px 0 20px 0;
 }
 
 .labelScale{
     display: flex;
     align-items: center;
-    color: #fcd7ad;
+    color: #fff7ee;
     padding: 10px;
     font-weight: 600;
     border-radius: 20px;
     background-color: #a57548;
-    font-family: Helvetica, sans-serif;
+    font-family: 'Sora', sans-serif;
     cursor: pointer;
     user-select: none;
     box-shadow: 0 5px rgb(140, 140, 140);
@@ -83,38 +88,44 @@ input[name ="sizeSlider"] {
 }
 
 .labelScale:hover{
-    background-color: #89613c;   
+    background-color: #c38b57;   
 }
 .labelScale:active{
-box-shadow: 0 5px #666;
-transform: translateY(4px);
+    box-shadow: 0 3px #666;
+    transform: translateY(4px);
 }
 input[name ='sizeSlider']:checked + .labelScale{
- background-color: #a57548;
+    background-color: #d6975c;
+    box-shadow: 0 3px #666;
+    transform: translateY(4px);  
+    color: beige;
 }
 
 input[name ='sizeSlider']:checked + .labelScale:before{
     height: 16px;
     width: 16px;
     border: 5px solid white;
-    background-color: #a57548;
+    background-color: #d6975c;
 }
 
 .colorPicker {
+    user-select:none;
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
 }
 #colorPicker{
     width: 50px;
     height: 50px;
-    background-color: #fcd7ad;
+    background-color: #a57548;
     border: 1px solid aliceblue;
     border-radius: 5px;
 }
 
 #colorPicker:hover{
-    background-color: #ccaf8e;
+    background-color: #c38b57;
 }
 .buttonAll {
     display: flex;
@@ -123,22 +134,44 @@ input[name ='sizeSlider']:checked + .labelScale:before{
 }
 
 button {
-    padding: 15px 25px;
-    font-size: 24px;
+    font-family: 'Sora', sans-serif;
+    padding: 15px;
+    width: 170px;
+    height: 50px;
+    font-size: 18px;
     text-align: center;
     cursor: pointer;
     outline: none;
-    color: #fff;
-    background-color: #04AA6D;
+    color: #fff7ee;
+    background-color: #a57548;
     border: none;
     border-radius: 15px;
-    box-shadow: 0 9px #999;
+    box-shadow: 0 5px #999;
+    user-select:none;
   }
 
-button:hover {background-color: #3e8e41}
+button:hover {background-color: #c38b57}
 
 button:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
+  background-color: #c38b57;
+  box-shadow: 0 3px #666;
+  transform: translateY(4px);  
+  color: beige;
 }
+.active {
+    background-color: #d6975c;
+    box-shadow: 0 3px #666;
+    transform: translateY(4px);  
+    color: beige;
+  } 
+
+  .footer {
+    font-size: 12px; 
+    font-family: 'Sora'; 
+    color: #e79134; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    height: 80px;
+    user-select:none;
+  }

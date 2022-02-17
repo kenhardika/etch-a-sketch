@@ -26,20 +26,26 @@ drawBtn.onclick= ()=> { changeMode('drawMode'); console.log('draw mode on'); }
 rainbowBtn.onclick= ()=> { changeMode('rainbowMode'); console.log('rainbow mode on'); }
 clearBtn.onclick=()=> { changeMode('clearMode'); console.log('clear mode on'); } 
 
-
-
+//change mode
 function changeMode(modeState){
-curMode = modeState;
-activateBtnMode(modeState);
+    curMode = modeState;
+    activateBtnMode(modeState);
 }
-
+//button response
 function activateBtnMode(modeState){
+    eraserBtn.classList.remove('active');
+    drawBtn.classList.remove('active');
+    rainbowBtn.classList.remove('active');
     if (curMode === 'eraserMode') {
+        console.log('erase button activated');
+        eraserBtn.classList.add('active');
     }
     else if ( curMode === 'drawMode' ){
+        drawBtn.classList.add('active');
     }
     else if (curMode === 'rainbowMode') {
-    }
+        rainbowBtn.classList.add('active');
+     }
     else if (curMode === 'clearMode') {
     clearState();
     }
@@ -69,29 +75,30 @@ function clearState() {
     let gridEach = document.querySelectorAll('.colrow')
         for (let i=0 ; i <gridEach.length ; i++) { gridEach[i].style.backgroundColor='';
         }
-        curMode = DEFAULT_MODE; 
+        curMode = DEFAULT_MODE;
+        changeMode('drawMode'); 
     };
 }
-// repeat it x times horizontally in a single row,
 
 layer.classList.add('layerCanvas');
 function canvasSize(item) {
+//manual fine tuning
 let wdh16 = 2;
 let wdh24 = 1.33;
 let wdh36 = 1;
 if (item == 16 ) {
-    layer.style.gridTemplateColumns=`repeat(${item}, ${wdh16}em)`; //untuk 24x24 1em
-    layer.style.gridTemplateRows=`repeat(${item}, ${wdh16}em)`; //NEED CHANGE TO SMALLER PIXEL THE MORE BIGGER THE Input ITEM
+    layer.style.gridTemplateColumns=`repeat(${item}, ${wdh16}em)`;
+    layer.style.gridTemplateRows=`repeat(${item}, ${wdh16}em)`;
     console.log("pake 16")
 }
 else if (item == 24) {
-    layer.style.gridTemplateColumns=`repeat(${item}, ${wdh24}em)`; //untuk 24x24 1em
-    layer.style.gridTemplateRows=`repeat(${item}, ${wdh24}em)`; //NEED CHANGE TO SMALLER PIXEL THE MORE BIGGER THE Input ITEM
+    layer.style.gridTemplateColumns=`repeat(${item}, ${wdh24}em)`;
+    layer.style.gridTemplateRows=`repeat(${item}, ${wdh24}em)`;
     console.log("pake 24")
 }
 else {
-    layer.style.gridTemplateColumns=`repeat(${item}, ${wdh36}em)`; //untuk 24x24 1em
-    layer.style.gridTemplateRows=`repeat(${item}, ${wdh36}em)`; //NEED CHANGE TO SMALLER PIXEL THE MORE BIGGER THE Input ITEM
+    layer.style.gridTemplateColumns=`repeat(${item}, ${wdh36}em)`;
+    layer.style.gridTemplateRows=`repeat(${item}, ${wdh36}em)`;
     console.log("pake 36")
 };
 layer.innerHTML="";
@@ -100,21 +107,21 @@ layer.setAttribute('draggable', 'false');
 let itemArea = item*item;
     for (let i=1 ; i<=itemArea; i++) {
                     let div = document.createElement('div');
-                        div.style.border = "solid 1px #2929292F";
+                        div.style.border = "solid 1px #29292908";
                         div.style.boxSizing = "border-box";
                         div.classList.add(`colrow`);
                         div.classList.add(`_${i}`);
                         div.setAttribute('draggable', 'false');
                         if (item == 16) {
-                            div.style.width = `${wdh16}em`; //untuk 16x16 1.5em 
+                            div.style.width = `${wdh16}em`; 
                             div.style.height = `${wdh16}em`;
                         }
                         else if (item == 24) {
-                            div.style.width = `${wdh24}em`; //untuk 24x24 1em 
+                            div.style.width = `${wdh24}em`;  
                             div.style.height = `${wdh24}em`;
                         }
                         else {
-                            div.style.width = `${wdh36}em`; //untuk 36x36 0.5em 
+                            div.style.width = `${wdh36}em`;  
                             div.style.height = `${wdh36}em`;
                         }
                     layer.append(div);
@@ -133,8 +140,9 @@ function drawState() {
         gridEach[i].addEventListener('mousedown', changeColor);
     };    
 }
-
+//default on load
 window.onload = () => {
     canvasSize(DEFAULT_SIZE);
+    activateBtnMode(DEFAULT_MODE);
     drawState();
 }

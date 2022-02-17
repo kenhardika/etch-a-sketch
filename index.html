@@ -7,32 +7,26 @@
     <title>Canvas</title>
     <script src="./script.js" defer></script>
     <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
-
 <div class="header">Etch-A-Sketch</div>
-
-<div class="canvas">
-
-</div>
-
+<div class="canvas"></div>
 <div class="configCanvas">
     <div class="setScale">
-        <div class="customPanel">CUSTOM PANEL</div>
-        
+        <div class="colorPicker">
+            <input type="color" id="colorPicker" >
+        </div>
         <div class="all-labelScale">
         <input type="radio" name="sizeSlider" id="val1" value="16" checked required>
         <label class="labelScale" for="val1"> 16x16 </label>    
-    
         <input type="radio" name="sizeSlider" id="val2" value="24" required>
         <label class="labelScale" for="val2" > 24x24 </label>
-    
         <input type="radio" name="sizeSlider" id="val3" value="32" required>
         <label class="labelScale" for="val3"> 32x32 </label>
         </div>
-    </div>
-    <div class="colorPicker">
-        <input type="color" id="colorPicker" >
     </div>
     <div class="buttonAll">
         <button id="drawBtn"> Draw Mode </button>
@@ -41,10 +35,6 @@
         <button id="clearBtn"> Clear </button>
     </div>
 </div>
-
-<!-- <div class="test"> this is a div </div> -->
-
-
-
+<div class="footer">@kenhardika 2022</div>
 </body>
 </html>
